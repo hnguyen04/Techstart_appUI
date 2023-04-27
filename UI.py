@@ -1,5 +1,4 @@
 
-
 from pathlib import Path
 
 from tkinter import *
@@ -59,26 +58,30 @@ class login_frame(Frame):
             highlightthickness=0,
             relief="ridge"
         )
+
+        #create canvas
         canvas.place(x=0, y=0)
         canvas.create_rectangle(
             112.0,
             73.0,
             634.6497802734375,
             614.183349609375,
-            fill="#989898",
+            fill="#A9A9A9",
             outline="")
 
+        # create hyperlink
         def txt_on_click(e):
             txt.configure(fg="#666666")
             controller.show_frame(sign_up_frame)
 
         txt = Label(self, text="Register here", font=(
-            "Lato Regular", 14 * -1), fg="white", bg="#989898")
+            "Lato Regular", 14 * -1), fg="white", bg="#A9A9A9")
         txt.place(x=406.0, y=543.0)
         txt.bind('<Button-1>', txt_on_click)
         txt.bind('<Enter>', lambda e: txt.configure(fg="#BBBBBB"))
         txt.bind('<Leave>', lambda e: txt.configure(fg="white"))
 
+        #create other text
         canvas.create_text(
             253.0,
             545.0,
@@ -88,6 +91,7 @@ class login_frame(Frame):
             font=("Lato Regular", 14 * -1)
         )
 
+        #create login button
         self.button_image_1 = PhotoImage(file=r'.\assets\frame1\button_1.png')
         self.button_image_2 = PhotoImage(file=r'.\assets\frame1\button_1_hover.png')
         self.button_image_3 = PhotoImage(file=r'.\assets\frame1\button_1_onclick.png')
@@ -104,9 +108,12 @@ class login_frame(Frame):
             command=button_1_onclick,
             relief="flat"
         )
+
+        #hover button
         button_1.bind('<Enter>', lambda e: button_1.configure(image=self.button_image_2))
         button_1.bind('<Leave>', lambda e: button_1.configure(image=self.button_image_1))
         
+        #place button
         button_1.place(
             x=273.6806335449219,
             y=480.0,
@@ -114,6 +121,7 @@ class login_frame(Frame):
             height=54.0
         )
 
+        #create texts above textboxes
         canvas.create_text(
             221.0,
             198.0,
@@ -141,6 +149,7 @@ class login_frame(Frame):
             font=("Lato Regular", 29 * -1)
         )
 
+        #create textboxes
         username = StringVar()
         password = StringVar()
 
@@ -195,6 +204,7 @@ class sign_up_frame(Frame):
         Frame.__init__(self, parent)
         self.configure(bg="#FFFFFF")
 
+        #create canvas
         canvas = Canvas(
             self,
             bg="#FFFFFF",
@@ -211,9 +221,39 @@ class sign_up_frame(Frame):
             59.925567626953125,
             634.4696044921875,
             601.1089172363281,
-            fill="#989898",
+            fill="#A9A9A9",
             outline="")
 
+        #create Back button
+        self.back_img = PhotoImage(file=r'./assets/frame0/back.png')
+        self.back_img_hover = PhotoImage(file=r'./assets/frame0/back_hover.png')
+        self.back_img_onclick = PhotoImage(file=r'./assets/frame0/back_onclick.png')
+
+        def back_button_onclick():
+            back_button.configure(image=self.back_img_onclick)
+            controller.show_frame(login_frame)
+            
+        back_button = Button(
+            self,
+            image=self.back_img,
+            borderwidth=0,
+            highlightthickness=0,
+            command=back_button_onclick,
+            relief="flat"
+        )
+
+        #hover back button
+        back_button.bind('<Enter>', lambda e: back_button.configure(image=self.back_img_hover))
+        back_button.bind('<Leave>', lambda e: back_button.configure(image=self.back_img))
+        #place back button
+        back_button.place(
+            x=112.0,
+            y=60.0,
+            width=74.0,
+            height=43.0
+        )
+
+        #create signup button
         self.button_image_1 = PhotoImage(file=r'.\assets\frame0\button_1.png')
         self.button_image_2 = PhotoImage(file=r'.\assets\frame0\button_1_hover.png')
         self.button_image_3 = PhotoImage(file=r'.\assets\frame0\button_1_onclick.png')
@@ -232,15 +272,17 @@ class sign_up_frame(Frame):
             command=button_1_onclick,
             relief="flat"
         )
+        #hover signup button
         button_1.bind('<Enter>', lambda e: button_1.configure(image=self.button_image_2))
         button_1.bind('<Leave>', lambda e: button_1.configure(image=self.button_image_1))
+        #place singup button
         button_1.place(
             x=273.6806640625,
             y=480.0,
             width=198.3193359375,
             height=54.0
         )
-
+        #create texts above textboxes
         canvas.create_text(
             223.0,
             148.0,
@@ -286,6 +328,7 @@ class sign_up_frame(Frame):
             font=("Lato Regular", 29 * -1)
         )
 
+        #create textboxes
         username = StringVar()
         password = StringVar()
         Email = StringVar()
@@ -372,8 +415,7 @@ class sign_up_frame(Frame):
             fg="#000716",
             highlightthickness=0,
             font=("Lato"),
-            textvariable=repeated_pass,
-            show="*"
+            textvariable=Email,
         )
         entry_4.place(
             x=230.43535709381104,

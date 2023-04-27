@@ -1,42 +1,24 @@
+self.back_img = PhotoImage(file=r'./assets/frame0/back.png')
+        # self.back_img_hover = PhotoImage(file=r'./assets/frame0/back_hover.png')
+        # self.back_img_onclick = PhotoImage(file=r'./assets/frame0/back_onclick.png')
 
-
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r".\assets\frame1")
-
-
-def relative_to_assets(path: str) -> Path:
-    return ASSETS_PATH / Path(path)
-
-
-window = Tk()
-
-window.geometry("746x661")
-window.configure(bg = "#FFFFFF")
-
-username = StringVar()
-password = StringVar()
-
-canvas = Canvas(
-    window,
-    bg = "#FFFFFF",
-    height = 661,
-    width = 746,
-    bd = 0,
-    highlightthickness = 0,
-    relief = "ridge"
-)
-
-canvas.place(x = 0, y = 0)
-canvas.create_rectangle(
-    112.0,
-    73.0,
-    634.6497802734375,
-    614.183349609375,
-    fill="#BAB8B8",
-    outline="")
-
-# canvas.create_text(
-#     411.0,
-#     545.0,
-#     anchor="nw",
-#     text="Register here",
+        # def back_button_onclick():
+        #     button_1.configure(image=self.back_img_onclick)
+        #     controller.show_frame(login_frame)
+            
+        # back_button = Button(
+        #     self,
+        #     image=self.back_img,
+        #     borderwidth=0,
+        #     highlightthickness=0,
+        #     command=back_button_onclick,
+        #     relief="flat"
+        # )
+        # back_button.bind('<Enter>', lambda e: back_button.configure(image=self.back_img_hover))
+        # back_button.bind('<Leave>', lambda e: back_button.configure(image=self.back_img))
+        # back_button.place(
+        #     x=112.0,
+        #     y=60.0,
+        #     width=74.0,
+        #     height=43.0
+        # )
