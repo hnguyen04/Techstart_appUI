@@ -6,6 +6,7 @@
 from pathlib import Path
 
 from tkinter import *
+
 # Explicit imports to satisfy Flake8
 #from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
@@ -17,11 +18,14 @@ ASSETS_PATH = OUTPUT_PATH / Path(r".\assets\frame1")
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+root = Tk()
+window = Frame(root)
+root.geometry("746x661")
 
-window = Tk()
-
-window.geometry("746x661")
+window.pack(side="top", fill="both", expand=True)
 window.configure(bg = "#FFFFFF")
+window.grid_rowconfigure(0, weight=1)
+window.grid_columnconfigure(0, weight=1)
 
 username = StringVar()
 password = StringVar()
@@ -45,14 +49,29 @@ canvas.create_rectangle(
     fill="#BAB8B8",
     outline="")
 
-canvas.create_text(
-    411.0,
-    545.0,
-    anchor="nw",
-    text="Register here",
-    fill="#FFFFFF",
-    font=("Lato Regular", 14 * -1)
-)
+# canvas.create_text(
+#     411.0,
+#     545.0,
+#     anchor="nw",
+#     text="Register here",
+#     fill="#FFFFFF",
+#     font=("Lato Regular", 14 * -1)
+# )
+
+def txt_on_click(e):
+    txt.configure(fg="grey")
+def txt_on_enter(e):
+    txt.configure(fg="#DDDDDD")
+def txt_on_leave(e):
+    txt.configure(fg="white")
+
+
+txt = Label(window, text="Register here", font=("Lato Regular", 14 * -1), fg = "white", bg="#bab8b8")
+txt.place(x=406.0, y=543.0)
+txt.bind('<Button-1>', txt_on_click)
+txt.bind('<Enter>',  txt_on_enter)
+txt.bind('<Leave>', txt_on_leave)
+
 
 canvas.create_text(
     253.0,
@@ -66,6 +85,7 @@ canvas.create_text(
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
 button_1 = Button(
+    window,
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
@@ -150,5 +170,7 @@ entry_2.place(
     width=284.8008556365967,
     height=46.18756103515625
 )
-window.resizable(False, False)
+
+
+root.resizable(True, True)
 window.mainloop()
