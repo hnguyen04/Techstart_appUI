@@ -9,7 +9,7 @@ from PIL import Image, ImageTk
 
 
 # Explicit imports to satisfy Flake8
-#from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+# from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -18,6 +18,7 @@ ASSETS_PATH = OUTPUT_PATH / Path(r".\assets\frame0")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
+
 
 class root(Tk):
     def __init__(self, *args, **kwargs):
@@ -47,6 +48,7 @@ class root(Tk):
 
         # Using a method to switch frames
         self.show_frame(login_frame)
+
     def show_frame(self, cont):
         frame = self.frames[cont]
         # raises the current frame to the top
@@ -56,7 +58,7 @@ class root(Tk):
 class login_frame(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
-        self.configure(bg = "#FFFFFF")
+        self.configure(bg="#FFFFFF")
         canvas = Canvas(
             self,
             bg="#FFFFFF",
@@ -75,19 +77,15 @@ class login_frame(Frame):
             fill="#989898",
             outline="")
 
-
         def txt_on_click(e):
             txt.configure(fg="grey")
             controller.show_frame(sign_up_frame)
 
-
         def txt_on_enter(e):
             txt.configure(fg="#DDDDDD")
 
-
         def txt_on_leave(e):
             txt.configure(fg="white")
-
 
         txt = Label(self, text="Register here", font=(
             "Lato Regular", 14 * -1), fg="white", bg="#989898")
@@ -95,7 +93,6 @@ class login_frame(Frame):
         txt.bind('<Button-1>', txt_on_click)
         txt.bind('<Enter>',  txt_on_enter)
         txt.bind('<Leave>', txt_on_leave)
-
 
         canvas.create_text(
             253.0,
@@ -105,7 +102,7 @@ class login_frame(Frame):
             fill="#FFFFFF",
             font=("Lato Regular", 14 * -1)
         )
-        
+
         self.button_image_1 = PhotoImage(file=r'.\assets\frame1\button_1.png')
         button_1 = Button(
             self,
@@ -198,7 +195,6 @@ class login_frame(Frame):
         )
 
 
-
 class sign_up_frame(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
@@ -222,7 +218,6 @@ class sign_up_frame(Frame):
             601.1089172363281,
             fill="#989898",
             outline="")
-
 
         self.button_image_1 = PhotoImage(file=r'.\assets\frame0\button_1.png')
         button_1 = Button(
@@ -326,7 +321,7 @@ class sign_up_frame(Frame):
             highlightthickness=0,
             font=("Lato"),
             textvariable=repeated_pass,
-            show = "*"
+            show="*"
         )
         entry_2.place(
             x=230.43535709381104,
@@ -385,10 +380,3 @@ class sign_up_frame(Frame):
 if __name__ == "__main__":
     testObj = root()
     testObj.mainloop()
-
-
-
-
-        
-    
-        
