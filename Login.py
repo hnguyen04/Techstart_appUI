@@ -6,6 +6,7 @@
 
 from tkinter import *
 import Register
+import Resend_Password
 
 # Explicit imports to satisfy Flake8
 #from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
@@ -54,7 +55,7 @@ class login_frame(Frame):
 
         def fgpass_on_click(e):
             forget_pass.configure(fg="#666666")
-            #alert/success j do tinh sau
+            controller.show_frame(Resend_Password.resend)
 
         forget_pass.bind('<Button-1>', fgpass_on_click)
         forget_pass.bind('<Enter>', lambda e: forget_pass.configure(fg="#BBBBBB"))

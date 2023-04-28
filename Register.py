@@ -35,27 +35,6 @@ class sign_up_frame(Frame):
         self.back_img = PhotoImage(file=r'./assets/frame0/back.png')
         self.back_img_hover = PhotoImage(file=r'./assets/frame0/back_hover.png')
 
-        # back_button = Button(
-        #     self,
-        #     image=self.back_img,
-        #     borderwidth=0,
-        #     highlightthickness=0,
-        #     command=back_button_onclick,
-        #     relief="flat"
-        # )
-
-        # hover back button
-        # back_button.bind('<Enter>', lambda e: back_button.configure(
-        #     image=self.back_img_hover))
-        # back_button.bind(
-        #     '<Leave>', lambda e: back_button.configure(image=self.back_img))
-        # # place back button
-        # back_button.place(
-        #     x=138.0,
-        #     y=2.0,
-        #     width=74.0,
-        #     height=43.0
-        # )
 
         back = canvas.create_image(
             138.0,
